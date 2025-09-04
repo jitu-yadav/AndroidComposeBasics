@@ -23,8 +23,6 @@ fun QuoteListScreen(data: Array<Quote>, onClick:(quote:Quote)-> Unit) {
             modifier = Modifier
                 .padding(8.dp, 24.dp)
                 .fillMaxWidth(1f))
-        QuoteList(data = data) {
-            onClick(it)
-        }
+        QuoteList(data = data, onClick)
     }
 }

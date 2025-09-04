@@ -11,6 +11,9 @@ object DataManager {
     var data = emptyArray<Quote>()
     var isDataLoaded = mutableStateOf(false)
 
+    var currentPage = mutableStateOf(Pages.LISTING)
+    var currentQuote : Quote? = null
+
     fun loadAssetFromFile(context: Context) {
         try {
             val inputStream = context.assets.open("quotes.json")
@@ -26,6 +29,15 @@ object DataManager {
             isDataLoaded.value = true
         } catch (ex: Exception) {
             Log.e("JITU", ex.toString())
+        }
+    }
+
+    fun switchPage(quote: Quote?) {
+        if (currentPage.value == Pages.LISTING) {
+            currentQuote = quote
+            currentPage.value = Pages.DETAILS
+        } else {
+            currentPage.value = Pages.LISTING
         }
     }
 }

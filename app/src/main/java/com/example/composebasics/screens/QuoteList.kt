@@ -10,9 +10,7 @@ fun QuoteList(data: Array<Quote>, onClick: (quote: Quote) -> Unit) {
 
     LazyColumn(content = {
         items(data) {
-            QuoteListItem(it) { it ->
-                onClick(it)
-            }
+            QuoteListItem(it, onClick)
         }
     })
 }
